@@ -393,10 +393,11 @@ inline string CityConnect::trim_right(const string& s, const string& delimiters)
 	return newStringS;
 }
 
-inline string CityConnect::trim_left(const string& userCommandw2LocationNames, const string& delimiters) {
-	size_t sizeOfLocationName1 = userCommandw2LocationNames.find_first_of(delimiters);
-	string locationName1 = userCommandw2LocationNames.substr(sizeOfLocationName1);
-	return locationName1;
+inline string CityConnect::trim_left(const string& s, const string& delimiters) {
+	size_t posOfFirstDelimiter = s.find_first_of(delimiters);
+	string everythingbeforetheDelimiter = s.substr(posOfFirstDelimiter);
+	string newStringS = everythingbeforetheDelimiter;
+	return newStringS;
 }
 
 inline string CityConnect::trim(const string& s, const string& delimiters) {
