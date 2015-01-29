@@ -341,11 +341,21 @@ bool CityConnect::equalsIgnoreCase(const string& str1, const string& str2) {
         return false;
     }
 	
-    for (string::const_iterator c1 = str1.begin(), c2 = str2.begin(); c1 != str1.end(); ++c1, ++c2) {
-        if (tolower(*c1) != tolower(*c2)) {
-            return false;
-        }
-    }
+	string::const_iterator currentPositionInStr1 = str1.begin();
+	string::const_iterator currentPositionInStr2 = str2.begin();
+
+	while (currentPositionInStr1 != str1.end()){
+		char currentCharacterInStr1 = *currentPositionInStr1;
+		char currentCharacterInStr2 = *currentPositionInStr2;
+
+		if (tolower(currentCharacterInStr1) != tolower(currentCharacterInStr2)) {
+			return false;
+		}
+
+		++currentPositionInStr1;
+		++currentPositionInStr2;
+	}
+    
     return true;
 }
 
