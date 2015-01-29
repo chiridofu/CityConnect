@@ -298,6 +298,8 @@ bool CityConnect::isPositiveNonZeroInt(string s){
 }
 
 string CityConnect::removeFirstWord(string userCommand){
+	string firstWord = getFirstWord(userCommand);
+	string newUserCommand = replace(userCommand, firstWord, "");
 	return trim(replace(userCommand, getFirstWord(userCommand), ""));
 }
 
@@ -377,15 +379,18 @@ string CityConnect::replace(string a ,string b , string c) {
     {
         startofStringbInStringa = a.find(b);
 		if (startofStringbInStringa != -1)  {
-			a.replace(pos, b.length(), c);
+			a.replace(startofStringbInStringa, b.length(), c);
 		}
     }
-    while (pos!=-1);
+    while (startofStringbInStringa!=-1);
     return a;
 }
 
-inline string CityConnect::trim_right(const string& s, const string& delimiters) {
-	return s.substr( 0, s.find_last_not_of( delimiters ) + 1 );
+inline string CityConnect::trim_right(const string& userCommandWithoutFirstWord, const string& delimiters) {
+	size_t endOf2ndLocationName = userCommandWithoutFirstWord.find_last_not_of(delimiters);
+	string userCommandw2LocationNames = userCommandWithoutFirstWord.substr(0, endOf2ndLocationName + 1);
+
+	return userCommandw2LocationNames;
 }
 
 inline string CityConnect::trim_left(const string& s, const string& delimiters) {
