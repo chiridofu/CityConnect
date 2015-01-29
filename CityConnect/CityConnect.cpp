@@ -401,8 +401,11 @@ inline string CityConnect::trim_left(const string& s, const string& delimiters) 
 }
 
 inline string CityConnect::trim(const string& s, const string& delimiters) {
-	if(!s.empty())
-		return trim_left( trim_right( s, delimiters ), delimiters );
+	if (!s.empty()){
+		string commandTrimmedRight = trim_right(s, delimiters);
+		string commandTrimmed = trim_left(commandTrimmedRight, delimiters);
+		return commandTrimmed;
+	}
 	else
 		return s;
 }
