@@ -372,11 +372,13 @@ int CityConnect::parseInt(string str) {
 }
 
 string CityConnect::replace(string a ,string b , string c) {
-    int pos ;
+    int startofStringbInStringa ;
     do
     {
-        pos = a.find(b);
-        if (pos!=-1)  a.replace(pos, b.length(), c);
+        startofStringbInStringa = a.find(b);
+		if (startofStringbInStringa != -1)  {
+			a.replace(pos, b.length(), c);
+		}
     }
     while (pos!=-1);
     return a;
