@@ -386,15 +386,17 @@ string CityConnect::replace(string a ,string b , string c) {
     return a;
 }
 
-inline string CityConnect::trim_right(const string& userCommandWithoutFirstWord, const string& delimiters) {
-	size_t endOf2ndLocationName = userCommandWithoutFirstWord.find_last_not_of(delimiters);
-	string userCommandw2LocationNames = userCommandWithoutFirstWord.substr(0, endOf2ndLocationName + 1);
-
-	return userCommandw2LocationNames;
+inline string CityConnect::trim_right(const string& s, const string& delimiters) {
+	size_t lastPosBeforetheDelimiter = s.find_last_not_of(delimiters);
+	string everythingaftertheDelimiterRemoved = s.substr(0, lastPosBeforetheDelimiter + 1);
+	string newStringS = everythingaftertheDelimiterRemoved;
+	return newStringS;
 }
 
-inline string CityConnect::trim_left(const string& s, const string& delimiters) {
-	return s.substr( s.find_first_not_of( delimiters ) );
+inline string CityConnect::trim_left(const string& userCommandw2LocationNames, const string& delimiters) {
+	size_t sizeOfLocationName1 = userCommandw2LocationNames.find_first_of(delimiters);
+	string locationName1 = userCommandw2LocationNames.substr(sizeOfLocationName1);
+	return locationName1;
 }
 
 inline string CityConnect::trim(const string& s, const string& delimiters) {
