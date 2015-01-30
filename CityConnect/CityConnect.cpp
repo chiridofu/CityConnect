@@ -272,9 +272,11 @@ int CityConnect::location(string newStartLocation, string newEndLocation) {
  */
 bool CityConnect::sameRoute(string startLocation1, 
 	string endLocation1, string startLocation2, string endLocation2) {
+	
+	bool emptyLocation1Destination = startLocation1.empty() || endLocation1.empty();
+	bool emptyLocation2Destination = startLocation2.empty() || endLocation2.empty();
 
-	if((startLocation1.empty())||(endLocation1.empty())
-				&&(startLocation2.empty())||(endLocation2.empty())) {			
+	if(emptyLocation1Destination && emptyLocation2Destination) {			
 			showToUser(ERROR_NULL_ROUTE_ENDPT);
 			showToUser(MESSAGE_PROGRAM_TERMINATION);
 
